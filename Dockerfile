@@ -1,10 +1,10 @@
-FROM arm64v8/node:buster as build
+FROM node:buster as build
 
 COPY . /javpy
 
 RUN cd /javpy && npm install --only=prod --unsafe-perm && npm install -g pkg && pkg -t node14-linux .
 
-FROM arm64v8/debian:buster-slim
+FROM debian:buster-slim
 
 WORKDIR /
 
